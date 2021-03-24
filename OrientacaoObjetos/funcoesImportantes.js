@@ -1,11 +1,11 @@
 // Criar objeto pessoa e suas caracteristicas com NOTAÇÃO LITERAL
 const pessoa = {
-    nome: 'Luíza',
-    idade: 13,
-    altura: 1.60,
+    nome: 'Bruce',
+    idade: 23,
+    altura: 1.70,
     endereco: {  // endereço também é um objeto, porém dentro de pessoa    
-        rua: 'Antônio Kavamoto',
-        numero: 39,
+        rua: 'Antônio',
+        numero: 9,
         bairro: 'Aclimação',
         cidade: 'Uberlândia',
         uf: 'MG'
@@ -21,8 +21,8 @@ console.log(Object.entries(pessoa)) // aqui teremos um array com chave e valor
 Lembrando que objetos é uma coleção de chaves e valor
      _______[exemplo]_________
     |___KEY___|_____VALUE_____|
-    |  nome:  |    'Luíza'    |             
-    | idade:  |     '13'      |        
+    |  nome:  |    'Bruce'    |             
+    | idade:  |     '23'      |        
     |-------------------------|
 
 */
@@ -65,7 +65,7 @@ Object.defineProperty(pessoa, 'dataNascimento', {
 Object.defineProperty(pessoa.endereco, 'cep', {
     enumerable: true,
     writable: false,
-    value: 38406025
+    value: 3840000
 })
  /* defineProperty é bacana para ler as infos que tu precisa para poder
     preparar seu sql, funciona bem assim tambem */ 

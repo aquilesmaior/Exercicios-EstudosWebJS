@@ -1,0 +1,110 @@
+<video id="meuVideo" width="800" height="450" controls  controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+        asdfasdf
+</video>
+
+<!--
+    DESAFIO - implementar uma barra de progresso relacionado ao vídeo acima
+
+-->
+<div wm-progresso="meuVideo" class="progresso">
+    <div>
+        <!-- -->
+    </div>
+</div>
+
+
+<!-- Definir dois botões play externo-->
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+
+
+
+    }
+</style>
+
+<script>
+
+    function configVideo(id) {
+        const video = document.getElementById('meuVideo');
+        const btnPlay = document.querySelector('[wm-play]');
+        const btnPause = document.querySelector('[wm-pause]');
+
+    }
+
+    configVideo('meuVideo')
+
+   
+   const barraProg = document.querySelectorAll('[wm-progresso] > div')
+   //const tempoProg = Array.from(barraProg)
+   //console.log('barra= ', tempoProg)
+   barraProg.style.width = '10px';
+   
+  
+   btnPlay.onclick = function() {
+         video.play();
+   }
+   
+   btnPause.onclick = function() {
+    //console.log('tamanho video = ', video.buffered.length)
+       video.pause();
+   }
+
+   /*
+   function progresso(){
+       const mAtual = video.currentTime;
+       console.log(Math.round(video.currentTime));
+       //console.log(Math.round(video.currentTime)); // valor arredondado
+
+       for(let i = 0; mAtual > 0; i++) {
+           tempoProg.style.width = `${mAtual}px`
+       }
+       
+   }
+
+   
+   
+   setTimeout(progresso(), 1003)
+   
+*/
+   
+  
+
+   //video.buffered.start(0);
+
+   //console.log('minuto Inicio = ', video.buffered.length)
+   //alert("Start: " + video.buffered.start() + " End: "  + video.buffered.end());
+   
+   /*
+   console.log('minuto Inicio = ', video.buffered.star(0))
+   console.log('minuto Final = ', video.buffered.end(0))
+
+   /*  Atributos de vídeo
+        play()
+        pause()
+        width = tamanho 560, 320 ou 420
+
+
+        https://www.w3schools.com/tags/ref_av_dom.asp
+
+   */
+   
+
+</script>    

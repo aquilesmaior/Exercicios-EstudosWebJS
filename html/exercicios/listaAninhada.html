@@ -1,0 +1,70 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        <span maior-folder>backend</span>
+        <ul>
+            <li>
+                <span maior-folder>app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+
+            <li>
+            <span maior-folder>config</span>
+            <ul>
+                <li>banco.js</li>
+                <li>rotas.js</li>
+                <li>servidor.js</li>
+            </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+        <span maior-folder>frontend</span>
+        <ul>
+            <li>
+                <span maior-folder>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+     </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    // querySelectorAll, vai pegar todas minhas tags personalizadas <span maior-folder> e vamos percorre-las usando o forEach
+    document.querySelectorAll('[maior-folder]').forEach(folder => {
+        folder.onclick = function(e) {
+            const ul = folder.nextElementSibling
+            const d = ul.style.display
+            ul.style.display = d === 'none' ? 'block' : 'none' 
+            // debugger // caso queira debugar seu código, passo a passo 
+            //console.log('teste')
+        }
+    })
+
+
+    /*
+    Usando tag personalizada: <span maior-folder>
+        document.querySelectorAll('[maior-folder]').
+        document.querySelectorAll('a') // poderia usar o padrão id também
+
+    Operação Ternaria para (encolher ou recolher)
+    
+    ul.style.display = d === 'none' ? 'block' : 'none'
+    Se o display for exatamente igual a 'none'
+    então ele recebe 'block', caso contrário ele recebe 'none'
+    Se for visivel, fica invisivel e vice e versa 
+
+
+
+    */
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo </span></div>
+    <span class="quarto ultimo">.quarto .ultimo</span>
+    <script>              
+        // ... SELECIONE OS ELEMENTOS VIA JS USANDO A CLASS destaque do arquivo css
+/*
+        const destacar = document.getElementById('primeiro') // usando getElementById
+        destacar.classList.add('destaque')
+
+        const divDois = document.querySelector('#segundo') // usando querySelector
+        divDois.classList.add('destaque')
+        */
+       document.querySelector('#primeiro').classList.add('destaque')
+
+       const selecionar = seletorX => 
+            document.querySelectorAll(seletorX).forEach(e => e.classList.add('destaque'))
+        
+        // caso preciso converter o nodelist, pode usar array.from ou spread(...)
+        // Array.from(document.querySelectorAll(seletorX)) // array
+        // [...document.querySelectorAll(seletorX)] // spread
+
+       const deselecionar = seletorX =>      
+            document.querySelectorAll(seletorX).forEach(e => e.classList.remove('destaque'))
+
+       selecionar('div') // div, span, p, h1.., button,.... (isso são seletores)
+       //selecionar('#segundo') // # selecionando via id
+
+       deselecionar('*')  // * quer dizer todos
+       selecionar('.terceiro.ultimo') // veja que podemos add mais de uma classe
+       
+       
+       deselecionar('*') 
+       selecionar(':not(#primeiro)') // ele ignorar o querySelectorAll e vai usar a linha anterior acima do querySelector()
+
+       deselecionar('*') 
+       selecionar(':nth-child(1)') //aqui vai selecionar o primeiro filho de algum elemento, no caso a primeira div e o primeiro filho de alguma div no caso a span
+
+       deselecionar('*') 
+       selecionar('div:nth-of-type(1)') //vai pegar o primeiro elemento do tipo div
+
+       deselecionar('*') 
+       selecionar('span:nth-of-type(1)') // aqui já pegaria o seletor span, pode mudar pelo seletor que precisar
+
+       deselecionar('*') 
+       selecionar('[wb-attrib]') // a partir de um atributo
+
+        
+
+
+
+    </script>
+</body>
+</html>

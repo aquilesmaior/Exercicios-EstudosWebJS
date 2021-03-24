@@ -1,0 +1,80 @@
+<video id="meuVideo" width="800" height="450" controls  controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+        asdfasdf
+</video>
+
+<!--
+    DESAFIO - implementar uma barra de progresso relacionado ao vídeo acima
+
+-->
+<div wm-progresso="meuVideo" class="progresso">
+    <div>
+        <!-- -->
+    </div>
+</div>
+
+
+<!-- Definir dois botões play externo-->
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+
+
+
+    }
+</style>
+
+<script>
+
+    function configVideo(id) {
+        const video = document.getElementById(id); // id do vídeo
+        video.oncontextmenu = () => false // desabilita clique e salvar do vídeo
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play();
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause();
+        
+        setInterval(() => {
+            const percentual = (video.currentTime / video.duration) * 100
+            const divProgresso = document.querySelector(`[wm-progresso=${id}] > div`)
+            divProgresso.style.width = `${percentual}%`
+            divProgresso.style.textAlign = 'left';
+            divProgresso.innerHTML = `${Math.round(percentual)}%`
+            // divProgresso.innerHTML = `${percentual.toFixed(1)}%` // poderia ser assim 
+          //  console.log(percentual);
+            
+        }, 500)
+    }
+
+    configVideo('meuVideo')
+
+   /*
+   console.log('minuto Inicio = ', video.buffered.star(0))
+   console.log('minuto Final = ', video.buffered.end(0))
+
+   /*  Atributos de vídeo
+        play()
+        pause()
+        width = tamanho 560, 320 ou 420
+
+
+        https://www.w3schools.com/tags/ref_av_dom.asp
+
+   */
+   
+
+</script>    

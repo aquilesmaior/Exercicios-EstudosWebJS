@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Selecionando Elementos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        .negrito {
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Selecionando Elementos #01</h1>
+    <div>
+        <p>Parágrafo
+            <span class='negrito'>dentro span</span>
+        </p>
+    </div>
+    <div>
+        <ul id='feira'>
+            <li>Arroz</li>
+            <li wm-obrigatorio>Feijão</li>
+            <li class='opcional'>Carne</li>
+            <li class='opcional'>Ovo</li>
+        </ul>
+    </div>
+    <form>
+        <input type='text' name='texto'>
+        <input type='password' name='senha'>
+        <input type='checkbox' name='check1'>
+        <input type='radio' name='radio1'>
+        <input type='file' name='arquivo'>
+    </form>
+
+    <script>
+        // jQUERY - Tratando elementos
+        // nesse caso não precisamos percorrer os elementos como fazemos no js
+        // SÓ LEMBRANDO - você pode escrever $('elemento') ou jQuery('elemento')
+        
+        $('#feira').addClass('destaque').removeClass('destaque') // add e remove na ul feira
+        $('li').addClass('destaque') // add só no li
+        $('[wm-obrigatorio]').removeClass('destaque') // vai remover só deste elemento especial [wm-obrigatorio]
+        $('li.opcional').removeClass('destaque') // remove só do li com class o'opcional'
+        $('div p span').addClass('destaque') // add no <span> que está dentro do <p>paragrafo da <div>
+
+
+        // Exclusivos do jQuery       
+        $('li:first').css('border', 'solid 3px blue') // add ao primeiro elemento li
+        $('li:odd').css('border', 'solid 4px white') // aplica só nos ímpares
+        $('li:gt(1)').css('border', 'solid 10px green')  // gt=great then , ou seja maior que determinado índice, exemplo:
+                            // ...se colocarmos a partir do índice 1, então será nosso terceiro elemento pois é 0, 1, 2carne
+                            // ... lembrando que vai pegar a partir deste terceiro elemento todos depois dele.
+        $('li:not(:last)').css('border', 'none') // o li que não seja o último  , no caso vai tirar o style da carne                 
+        $('li:contains("rr")').css('background-color', 'black') // ele vai buscar o elemento que contenha alguma letra ou palavra específicada
+
+
+        // seletores
+        $('form *').hide() // escondendo todos elementos do form
+        $('form :text').show() // mostrar os elementos do tipo text (no caso os inputs text)
+        $('form :password').show() // mostrar elemento password
+        $('form :checkbox').show()
+        $('form :radio').show()
+        $('form :file').show()
+
+
+        // OBSERVAÇÃO - TENTE SEMPRE DEIXAR O SEU HTML E CSS MAIS SIMPLES E PRÁTICO POSSÍVEL
+        // PARA QUE ASSIM NÃO PRECISE FICAR FAZENDO MALABARISMOS NO JS E JQUERY OK. 
+        // UM CÓDIGO COMENTADO, SIMPLES E CLARO. É BOM PARA VOCÊ MESMO NO FUTURO.
+
+    </script>
+</body>

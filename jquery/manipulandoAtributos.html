@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando Atributos</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        [wm-relogio] {
+            text-align: center;
+        }
+
+        [wm-relogio] button {
+            font-size: 1.6em;
+            padding: 0px 25px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando Atributos</h1>
+    <div wm-relogio='1000'></div>
+    <div wm-relogio='3000'></div>
+    <script>
+        // CRIAR UM RELÓGIO com dois botões para diminuir ou aumentar o seu tempo de atualização
+
+        function Relogio(elemento) {
+            const horaCerta = $('<p>')
+            const botaoMenos = $('<button>').html('-')
+            const botaoMais = $('<button>').html('+')    
+            
+            const $elemento = $(elemento)
+            $elemento.append(horaCerta, botaoMenos, botaoMais)
+
+            // agora vamos passar o atributo que queremos receber o valor
+            const getIntervaloAtual =
+                () => parseInt($elemento.attr('wm-relogio'))
+
+            let temporizador = null
+            const iniciar = () => {
+                if (temporizador) clearInterval(temporizador)
+                temporizador = setInterval(() => {
+                    horaCerta.html(new Date().toLocaleString('pt-BR'))
+                }, getIntervaloAtual())
+           }    
+
+           const alterarIntervalo = delta => {
+                   // em operação ternária seria assim: getIntervaloAtual() + delta >= 1000 ? getIntervaloAtual() + delta : 1000
+               const novo = Math.max(getIntervaloAtual() + delta, 1000) 
+               $elemento.attr('wm-relogio', novo)
+               iniciar()
+           }
+
+           // evento click + e -. chamamos a funcao intervalo
+           botaoMenos.click(e => alterarIntervalo(1000))
+           botaoMais.click(e => alterarIntervalo(-1000))
+           iniciar()
+
+        }
+
+        $('[wm-relogio]').each((i, e) => new Relogio(e))
+
+        // curiosidades
+        // passar um objeto com vários objetos ao mesmo tempo
+        $('[wm-relogio]').attr({ opa: 1, novo: true }) // se vc inspecionar verá que foi add <div wm-relogio="1000" opa="1" novo="true">
+        // $('[wm-relogio]').attr('opa') // vai ler
+        // $('[wm-relogio]').attr('opa, 3') // alterar ou incluir
+
+
+        // remover atributos
+        $('[wm-relogio]').removeAttr('opa') // vai remover
+        
+
+        // 
+
+    </script>
+</body>

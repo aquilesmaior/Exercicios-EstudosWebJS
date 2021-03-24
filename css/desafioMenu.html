@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        /* DESAFIO ESTILAR MENU IGUAL PROPOSTO PELO PROFESSOR */
+
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0px;
+        }
+        .cabecalho {
+            position: relative;
+            padding: 0px 20px 52px 20px;
+            width: 100%; 
+            background-color: #2f2f2f;
+            border-bottom: 5px skyblue solid;
+            box-shadow: 0px 0px 6px 0px skyblue;
+
+        }
+            
+
+        .logo, img {
+                max-width: 250px;
+                float: left;
+            }
+
+        nav.menu {
+           line-height: 18px;
+        }
+        .menu { 
+            float: left;
+            text-align: center;
+            
+            
+        }
+        .menu ul li {
+            display: inline-block;
+            list-style: none;
+            
+            
+        }
+
+        .menu ul li > a {
+            color: white;
+            font-family: Oswald;
+            text-decoration: none;
+            padding: 13px 15px 15px 15px;
+            
+            
+        }
+
+        .menu ul li a:hover {
+            color: black;
+            background: skyblue;
+            text-decoration: none;
+            transition: .1s ease;
+        }
+
+        .selected {
+            background-color: skyblue;
+            color: #000;
+        } 
+
+        .menu-toggle {
+            float: right;
+            position: sticky;
+            margin: 12px 35px 0px 0px;
+            padding: 5px;
+        }
+
+        aside.autenticacao {
+            line-height: 15px;
+            padding: 6px 35px 0px 0px;
+            display: inline-flex;
+            float: right;
+        }
+
+        .autenticacao > a {
+            color: #fff;
+            float: right;
+            font-family: Oswald;
+            margin-right: 5px;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            width: 100px;
+            padding: 10px 10px 9px 10px;
+        }
+
+        .autenticacao > a:hover {
+            background-color: skyblue;
+            border-radius: 4px;
+            color: #000;
+        }
+        
+        a[class*=destaque] {
+            background-color: tomato;
+            border-radius: 4px;
+            text-align: center;
+            width: 100px;
+        }
+
+        a[class*=destaque]:hover {
+            background-color: #d24a32;
+            color:whitesmoke;
+            transition: .2s ease;
+            
+        }
+
+
+
+        @media (max-width: 600px ){
+                .cabecalho { display: block;}
+                .menu { display: none; }
+                .menu-toggle { display: inline;}
+                
+        }
+
+            /* @media (max-width: 1000px), (orientation: landscape;)*/ 
+         @media (min-width: 500px) and (max-width: 1000px) {
+                aside.autenticacao { display: none; }
+                .cabecalho { display: block; }
+                .menu { display: none; }
+                
+                
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        // 2ª PARTE DESAFIO - PEGAR A PAGINA ATUAL E DEIXAR O ITEM DO MENU ATUAL ATIVO
+
+        //const atualM = document.querySelector()
+		//const pagAtual = document.querySelectorAll('#menu > ul > li > a').style.color = "red";
+		
+		window.onhashchange = function(e) {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+
+            console.log(oldURL, newURL)
+            const oldMenu = document.querySelector(`.menu a[href='#${oldURL}'`)
+            const newMenu = document.querySelector(`.menu a[href='#${newURL}'`)
+            oldMenu && oldMenu.classList.remove('selected')
+            newMenu && newMenu.classList.add('selected')
+        }
+
+
+
+        
+
+    </script>
+</body>
+
+</html>

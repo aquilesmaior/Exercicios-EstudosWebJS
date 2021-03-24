@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>0 cliques</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        // ... 
+
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX}`).append(`${e.clientY}`)
+
+        }
+
+        // associar ao body o evento do mouse , o movimento do mouse
+        $('body').on('mousemove', mostrarPosicaoMouse)
+
+        
+        // cuidado ao usar o this com arrowfunction
+        $('#posicao').mouseover(e => {
+            // aqui qdo o mouse passar sobre a div #posicao, ele não vai mostrar a posição
+            $('body').off('mousemove', mostrarPosicaoMouse) // vai tipo desregistrar o moviemnto
+        })
+
+
+        // voltar registrar o movimento ao sair da div
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoMouse) // vai tipo desregistrar o moviemnto
+        })
+
+        // controlar o evento click
+        let cliques = 0
+
+        $('body').click(e => {
+            $('#cliques').html(`${++cliques} cliques `)
+        })
+
+        
+        // agora iremos manipular os eventos do teclado
+        // para mudar a cor do body de acordo com o hexadecimal digitado
+
+        const backgroundOriginal = $('body').css('background-color')
+        //console.log(backgroundOriginal)
+
+//        $('input').keyup(e => {  não usar arrow neste caso, devido ao this
+    $('input').keyup(function (e) {
+            //$('body').css('background-color', e)
+            //console.log(e.target.value)
+            //let corDigitada = e.target.value
+            const corDigitada = $(this).val() // ou seja está pegando o que foi digitado no input
+            console.log(corDigitada)
+
+            
+            if(corDigitada.match(/#[\da-fA-F]{3,6}/)) {
+                $('body').css('background-color', corDigitada)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+            
+        })
+ 
+
+
+      // forma que eu fiz, mas o professor na aula explicou de outro jeito
+
+      /*
+      $('input').keyup(e => { 
+            let corDigitada = e.target.value
+            $('body').css('background-color', corDigitada)
+          //  console.log(corDigitada)
+        })     
+        */
+            
+
+      
+
+
+        
+    </script>
+</body>

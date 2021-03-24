@@ -1,0 +1,55 @@
+<h1>Formulário</h1>
+
+<form action="http://localhost:3003/usuarios" method="POST">
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome">
+    <input type="password" name="senha">
+    <textarea name="bio" id="" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+
+    <select name="estado">
+        <option>Selecione</option>
+        <option value="SP">São Paulo</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PR">Paraná</option>
+    </select>
+
+    <select name="interesses" multiple size="5">
+        <option value="iron">Iron Maiden</option>
+        <option value="helloween">Helloween</option>
+        <option value="whitesnake">Whitesnake</option>
+        <option value="guns">Guns ´n Roses</option>
+        <option value="barao">Barão Vermelho</option>
+        <option value="dio">Ronnie James</option>
+    </select>
+
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+
+</form>
+
+
+
+
+<style>
+    input,
+    textarea,
+    select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+        display: inline;
+    }
+
+    
+</style>

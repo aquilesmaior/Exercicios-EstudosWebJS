@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+ <html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<meta http-equiv="X-UA-Compatible" content="ie-edge">-->
+        <title>Exercícios HTML</title>    
+    </head>
+
+    <body>
+    <header> 
+        <h1>Exercícios HTML</h1>
+    </header>
+    
+    <nav> 
+          <a href wm-nav="exercicios/teste0.html"> 00 - Teste</a> | 
+          <a href wm-nav="exercicios/temp.html"> TEMPP</a> |
+          <a href wm-nav="exercicios/tagSemantica.html"> 02 - Tags e Semantica</a> | 
+          <a href wm-nav="exercicios/listas.html"> 03 - Listas</a> | 
+          <a href wm-nav="exercicios/listaAninhada.html"> 04 - Lista Aninhada</a> |
+          <a href wm-nav="exercicios/listas.html"> 05 - Tabela</a> | 
+          <a href wm-nav="exercicios/form/form.html"> 06 - Formulário</a> | 
+          <a href wm-nav="exercicios/images.html"> 07 - Images</a> | 
+          <a href wm-nav="exercicios/slider.html"> 08 - Slider</a> | <!-- acesse diretamente pra testar-->
+          <a href wm-nav="exercicios/videoProf.html"> 09 - Video</a> | 
+          <a href wm-nav="exercicios/tagsNaoVisuais.html"> 10 - Tags Não Visuais</a> | 
+        </nav>
+
+    <section id="conteudo"></section>    
+
+    <footer>
+        <br>
+        Curso de Web Moderno
+    </footer>
+
+    <script>
+        //document.querySelectorAll('a').forEach(link => {   // <a href="exercicios/teste0.html"> 00 - Teste</a> 
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function(e) {
+               e.preventDefault()
+            // fetch(link.href) // passar uma req ajax. Fetch por ser mais simples e baseado em promisses
+               fetch(link.getAttribute('wm-nav'))
+                  .then(resp => resp.text()) // vai pegar o conteudo html da pagina que requisitei
+                  .then(html => conteudo.innerHTML = html) // vai jogar dentro de conteudo o html que obtive
+            }
+        })
+
+        /*
+                CASO O CHROME ESTE ERRO NO CONSOLE
+                HTTP error: status code 404, net::ERR_UNKNOWN_URL_SCHEME
+
+                FAÇA ISSO:
+                    Isso ocorre porque o Chrome adicionou suporte para mapas de origem.
+
+                    Vá para as ferramentas do desenvolvedor (F12 no navegador), selecione os três pontos no canto superior direito e vá para Configurações .
+
+                    Em seguida, procure Fontes e desative as opções: "Ativar mapas de origem javascript" "Ativar mapas de origem CSS"
+
+        */
+    </script>
+   </body>
+</html>

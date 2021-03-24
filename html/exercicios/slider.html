@@ -1,0 +1,164 @@
+<!--
+    DESAFIO - CRIAR UM SLIDE horizontal EM JS
+
+    Criar um array de imagens
+    imgSlide = ['img1','img2','img3']
+
+    fazer o primeiro item do array entrar do lado
+    direito para o lado esquerdo, uma por uma
+    
+
+-->
+
+<div id="sliderX" >
+    <p>
+      <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+        alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem4.jpg"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    
+
+<p style="display: none;">
+    <picture> 
+        <!-- bem bacana pra situação responsiva, pois se ele não achar
+            o source, então ele vai testando os <img src> abaixo dentro 
+            do escopo de <picture>  -->
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)"> 
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png">
+    </picture>
+</p>
+
+</div>
+
+<p class="circular" >
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342">
+</p>
+
+
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+/*
+    .moveRight {
+        display: inline; 
+        position: absolute;
+        animation: teste 7s 4;
+        animation-direction: reverse;
+    }
+    @keyframes teste {
+        0%   { left: 100%; top: 0px;}
+        75%  {right: 0px; top: 0px;}
+        100% { left: 0px; top: 0px;}
+    }
+    
+
+*/
+
+.circular{
+        display: none;
+    }
+</style>
+
+<script>
+    /*
+    var sel = document.querySelectorAll('#sliderX > p');
+    console.log('seletor = ', sel)
+    
+     Testando se uma imagem vai percorrer a tela
+    const p = document.querySelector('#sliderX > p')
+    p.style.display = 'block'
+    mover(p, 1500, -520, 5, () => {
+        console.log('terminou!!!')
+    })
+    */
+    
+    // 1 -----
+    function slider() {
+         const elementos = document.querySelectorAll('#sliderX > p') // nodelist
+         const slides = Array.from(elementos) // converte o nodelist acima pra array
+         exibirSlide(slides, slides[0]) // chama funcao(todos slides, exibir o slide de indice 0) 
+                   
+    }
+
+    // 2 -----
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+        //slides[slide].className += "moveRight";
+
+        const inicio = innerWidth // largura total atual da sua janela (browser)
+        const fim = -slide.clientWidth // largura da área total da tela do cliente
+        //  pode ser definido manual tbém
+        // const inicio = 2000  
+        // const fim = -530
+
+        slide.style.left = `${inicio}px`
+        // slide.style.marginTop = '0px' // ex de add mais atributos
+                
+        
+        
+       mover(slide, inicio, fim, 5, () => { //chamando funcao mover
+            slide.style.display = 'none'
+           //slide atual, inicio, fim, passo
+           // qdo terminar  o movimento, chamar o próximo slide
+           exibirSlide(slides, getProximo(slides, slide))
+       }) 
+    }
+
+        // 3 -----    
+        function getProximo(lista, atual) {
+            const i = lista.indexOf(atual) + 1
+            return i < lista.length ? lista[i] : lista[0]
+        }
+
+     // 4 -----
+     function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo 
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 13)
+        } else {
+            callback()
+        }
+    }
+
+   
+
+    slider();
+
+/**/
+    //const partida
+
+    // calback
+    // css mover x y
+    //funcao recebe parametro o ponto de partida onde
+    // quero chegar no eixo x
+    
+</script>
+
+

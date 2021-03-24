@@ -1,0 +1,81 @@
+<div id="slider">
+    <p>
+      <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+        alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem4.jpg"
+        alt="Rio de Janeiro" height="342">
+    </p>
+
+    
+
+<p>
+    <picture> 
+        <!-- bem bacana pra situação responsiva, pois se ele não achar
+            o source, então ele vai testando os <img src> abaixo dentro 
+            do escopo de <picture>  -->
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)"> 
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png">
+    </picture>
+</p>
+
+</div>
+
+<p class="circular" >
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342">
+</p>
+
+<div id="teste">asdfasdfsa</div>
+<style>
+    p {
+        position: absolute;
+    }
+    .circular {
+        width: 513px;
+        background-color: #828282;
+        position: absolute;
+        animation: teste 7s 4;
+        animation-direction: reverse;
+    }
+    @keyframes teste {
+        0%   {/*background: red;*/ left: 100%; top: 0px;}
+        75%  {/*background: green;*/ right: 0px; top: 0px;}
+        100% {/*opacity: 0.2;*/ /*background: red;*/ left: 0px; top: 0px;}
+    }
+
+    
+}
+</style>
+
+<script>
+    //DESAFIO CRIAR UM SLIDER HORIZONTAL
+
+    // function calback 
+    // css mover x y
+    //funcao recebe parametro o ponto de partida onde
+    // quero chegar no eixo x
+  
+
+
+</script>
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <a timer-esperar href="https://google.com.br">Google</a>
+        <!-- poderia ser usado também direto no link
+            <a onclick="iniciarEm" href-->
+    </div>
+    <script>
+        // ... DESAFIO - ao ser clicado fazer aguardar 5 segundos pra executar
+        function iniciarEm(e) {
+            e.preventDefault() // importante para quando queremos mexer em algum tipo de evento, comportamento padrão
+            console.log('inicar navegação em 5 segundos')
+            setTimeout(() => {
+                const link = e.target   
+                window.location.href = link.href
+            }, 5000);
+        }
+        
+        // const a = document.querySelector('a') // tbém funciona
+        // a.conclick = iniciarEm 
+
+
+        // propriedade específica é mais bacana de usar [propriedade-especifica]    
+        const a = document.querySelector('[timer-esperar]')
+        a.onclick = iniciarEm
+    </script>
+</body>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #03</h1>
+    <div id='conteudo'></div>
+
+    <script>
+        
+        
+        // DESAFIO - Criar uma tabela de duas colunas a partir do nosso array acima
+
+      
+
+//        $(pessoas).each((i, e) => $('#conteudo').append($(e[])))
+
+
+        // muito comum querer carregar o script depois que a pagina estiver carregada
+        // para fazer isso precisamos
+        
+        
+        //$(document).ready(function() { // qdo documento(document) estiver pronto(ready) chame essa funcão(function) para executar { }
+        $(function() { // faz a mesma coisa que a linha de cima
+
+        const alunos = [
+            { nome: 'Ana', nota: 9.1 },
+            { nome: 'Bianca', nota: 8.4 },
+            { nome: 'Carlos', nota: 7.6 },
+            { nome: 'Julia', nota: 9.7 }
+        ]
+
+        const notas = alunos.map( a => a.nota) 
+
+        const total = notas.reduce(function(total, notas){
+              return total + notas;
+        }, 0);
+
+        console.log(total)
+
+        const headTab = $(`
+            <table>
+                <thead>
+                     <tr><th>Aluno:</th><th>Nota:</th></tr>
+                </thead><tbody>`)
+
+        const linhas = alunos.map(aluno => {
+            const tdNome = $('<td>').append(aluno.nome)
+            const tdNota = $('<td>').append(aluno.nota)
+                return $('<tr>').append(tdNome, tdNota)
+        })
+
+
+       
+
+        const footTab = $(` 
+                <tfoot>
+                    <tr>
+                        <th> Total </th>
+                        <th> ${total} </th>
+                </tfoot>
+        `)
+
+        const tabela = $(headTab).append(linhas).append(footTab)
+        $('#conteudo').append(tabela)
+
+      
+        $('<p>Depois 3</p>').insertAfter('#div3') // add antes da div3
+
+        $('tr:first').css('background-color', 'black') // primeiro
+        $('tr:odd').css('background-color', 'red')
+        $('tr:gt(0)').css('border', 'solid 1px grey') 
+        $('tr:last').css('background-color', 'black') // ultimo elemento
+
+
+        })
+
+        
+/*
+ // apartir do main, pegar todos filhos, percorrer cada elemento.
+        $('main').children().each((i, e) => $(e).css(comBorda).css(semBorda))
+        
+        // outra forma usando o each
+        $('li').each((i, e) => {
+            $(e).css(comBorda)
+
+        })
+
+*/
+
+        
+         // .append  e  .prepend
+         //   $('#div1').append(', 2') 
+         //   $('#div1').prepend('0, ') 
+         //   
+         //   .before .after
+         //   $('#div2').before('<p>antes 2</p>') 
+         //   $('#div2').after('<p>despues 2</p>')
+         //
+         //   .replaceWith
+         //   $('body > p').replaceWith('<div>Substituto2</div>')
+
+    /*
+
+    <table>
+    <thead><tr>
+        <td>Alunos</td>
+        <td>Notas</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>asdfasd</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+               <td>Total =</td>
+                <td>10</td>
+            </tr>
+            </tfoot>
+</table>
+
+    */
+
+    </script>
+</body>
+
+
+
+
